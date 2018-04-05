@@ -60,8 +60,13 @@ public class Utils {
 				if(isValidOperation(argument))
 					appOperation.setOperation(argument);
 				else {
-					appOperation.setTransaction_id(argument);
-					appOperation.setOperation("show");
+					if(args.getNonOptionArgs().size()==2) {
+						appOperation.setTransaction_id(argument);
+						appOperation.setOperation("show");
+					} else{
+						logger.error("Operation not supported");
+						System.exit(1);
+					}
 				}
 				break;
 			case 2:
