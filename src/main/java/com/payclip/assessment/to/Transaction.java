@@ -4,7 +4,11 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
+/**
+ * 
+ * @author betowadez@gmail.com Alberto Juarez
+ *
+ */
 public class Transaction {
 	
 	private String transaction_id;

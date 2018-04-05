@@ -1,5 +1,10 @@
 package com.payclip.assessment.to;
 
+/**
+ * 
+ * @author betowadez@gmail.com Alberto Juarez
+ *
+ */
 public class OperationParams {
 	
 	private Long user_id;

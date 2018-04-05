@@ -8,6 +8,11 @@ import org.springframework.boot.ApplicationArguments;
 
 import com.payclip.assessment.to.OperationParams;
 
+/**
+ * 
+ * @author betowadez@gmail.com Alberto Juarez
+ *
+ */
 public class Utils {
 	
 	private static final Logger logger = LoggerFactory.getLogger(Utils.class);

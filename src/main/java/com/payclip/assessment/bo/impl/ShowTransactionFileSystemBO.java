@@ -11,7 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.payclip.assessment.bo.ShowTransaction;
-
+/**
+ * 
+ * @author betowadez@gmail.com Alberto Juarez
+ *
+ */
 @Service("showTransactionBO")
 public class ShowTransactionFileSystemBO implements ShowTransaction {
 	
