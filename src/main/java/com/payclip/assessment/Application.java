@@ -41,7 +41,7 @@ public class Application implements ApplicationRunner {
         
 		switch (params.getOperation()) {
 			case Utils.ADD_OPERATION:
-				transactionOperationsBO.add(params);
+				transactionOperationsBO.add(params.getUser_id().toString(), params.getTransaction_json());
 				break;
 			case Utils.LIST_OPERATION:
 				transactionOperationsBO.list(params.getUser_id(), params.getTransaction_id());

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.InvalidParameterException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,12 +27,17 @@ public class AddTransactionFileSystemBO implements AddTransaction {
 	private static final Logger logger = LoggerFactory.getLogger(AddTransactionFileSystemBO.class);
 	private ObjectMapper mapper = new ObjectMapper();
 
-	public Transaction add(OperationParams params) {
+	public Transaction add(String user_id, String transactionJson) {
 
 		Transaction newTransaction = null;
 
 		try {
-			newTransaction = mapper.readValue(params.getTransaction_json(), Transaction.class);
+			newTransaction = mapper.readValue(transactionJson, Transaction.class);
+		
+			if(!Long.valueOf(user_id).equals(newTransaction.getUser_id())) {
+				throw new InvalidParameterException("user_id parameter must be equal to transaction.user_id");
+			}
+			
 			newTransaction.setTransaction_id(Utils.generateTransactionId());
 			
 			Path path = Paths.get(newTransaction.getUser_id().toString());

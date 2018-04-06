@@ -30,18 +30,19 @@ public class Utils {
 		logger.info("Application started with command-line arguments: {}", Arrays.toString(args.getSourceArgs()));
 		if(args.getNonOptionArgs()==null || args.getNonOptionArgs().size()==0 
 				|| args.getNonOptionArgs().size()<2 || args.getNonOptionArgs().size()>3) {
-			logger.info("Please execute the program as follows:");
-			logger.info("java -jar application-1.0.0.jar <user_id> add <transaction_json> OR");
-			logger.info("java -jar application-1.0.0.jar <user_id> <transaction_id> OR");
-			logger.info("java -jar application-1.0.0.jar <user_id> list OR");
-			logger.info("java -jar application-1.0.0.jar <user_id> sum \n");
+			logger.error("Please execute the program as follows:");
+			logger.error("java -jar application-1.0.0.jar <user_id> add <transaction_json> OR");
+			logger.error("java -jar application-1.0.0.jar <user_id> <transaction_id> OR");
+			logger.error("java -jar application-1.0.0.jar <user_id> list OR");
+			logger.error("java -jar application-1.0.0.jar <user_id> sum \n");
 			System.exit(0);
 		}
 		//first parameter must be a number
 		try {
 			Long.parseLong(args.getNonOptionArgs().get(0));
 		} catch(NumberFormatException nfe) {
-			logger.info("First parameter must be a number.");
+			logger.error("First parameter must be a number.");
+			System.exit(0);
 		}
 		
 	}
@@ -65,7 +66,7 @@ public class Utils {
 						appOperation.setOperation("show");
 					} else{
 						logger.error("Operation not supported");
-						System.exit(1);
+						System.exit(0);
 					}
 				}
 				break;

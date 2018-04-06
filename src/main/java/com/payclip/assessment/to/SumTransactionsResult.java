@@ -5,7 +5,7 @@ package com.payclip.assessment.to;
  * @author betowadez@gmail.com Alberto Juarez
  *
  */
-public class AddTransactionsResult {
+public class SumTransactionsResult {
 	
 	private String user_id;
 	private Double sum;

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.payclip.assessment.bo.SumTransaction;
-import com.payclip.assessment.to.AddTransactionsResult;
+import com.payclip.assessment.to.SumTransactionsResult;
 import com.payclip.assessment.to.Transaction;
 
 @Service("sumTransactionBO")
@@ -30,7 +30,7 @@ public class SumTransactionFileSystemBO implements SumTransaction {
 	private Double sum = new Double(0);
 
 	@Override
-	public AddTransactionsResult sum(String user_id) {
+	public SumTransactionsResult sum(String user_id) {
 		Path path = Paths.get(user_id.toString());
 		if (Files.exists(path)) {
 			try {
@@ -52,7 +52,7 @@ public class SumTransactionFileSystemBO implements SumTransaction {
 				transactions.forEach(t-> {
 					sum += t.getAmount();
 				});
-				AddTransactionsResult result = new AddTransactionsResult();
+				SumTransactionsResult result = new SumTransactionsResult();
 				result.setUser_id(user_id);
 				result.setSum(sum);
 				mapper.writeValue(out, result);

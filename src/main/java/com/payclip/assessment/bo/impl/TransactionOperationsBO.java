@@ -7,7 +7,7 @@ import com.payclip.assessment.bo.AddTransaction;
 import com.payclip.assessment.bo.ListTransaction;
 import com.payclip.assessment.bo.ShowTransaction;
 import com.payclip.assessment.bo.SumTransaction;
-import com.payclip.assessment.to.AddTransactionsResult;
+import com.payclip.assessment.to.SumTransactionsResult;
 import com.payclip.assessment.to.OperationParams;
 import com.payclip.assessment.to.Transaction;
 
@@ -27,8 +27,8 @@ public class TransactionOperationsBO implements AddTransaction, ShowTransaction,
 	SumTransaction sumTransactionBO;
 
 	@Override
-	public Transaction add(OperationParams params) {
-		return addTransactionBO.add(params);
+	public Transaction add(String user_id, String transactionJson) {
+		return addTransactionBO.add(user_id, transactionJson);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class TransactionOperationsBO implements AddTransaction, ShowTransaction,
 	}
 
 	@Override
-	public AddTransactionsResult sum(String user_id) {
+	public SumTransactionsResult sum(String user_id) {
 		return sumTransactionBO.sum(user_id);
 	}
 	
